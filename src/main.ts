@@ -7,17 +7,18 @@ const startUrls = ['https://scraper-testing-site.netlify.app/rates/']
 await Actor.main(async () => {
     const crawler = new CheerioCrawler({
         async requestHandler({ $, request, enqueueLinks }) {
+            const html = $('html').html() || ''
             const title = $('title').text()
             console.log(`Crawling ${title} at "${request.url}".`)
 
             // Parse all parts of the DOM
-            let parts = []
+            let parts:any = []
             let parser = new htmlparser.Parser({
-                onopentag: function (name, attributes) { parts.push(' ') },
+                onopentag: function () { parts.push(' ') },
                 ontext: function (text) { parts.push(text) },
-                onclosetag: function (tagName) { parts.push(' ') }
+                onclosetag: function () { parts.push(' ') }
             },{ decodeEntities: true })
-            parser.write($('html').html())
+            parser.write(html)
             parser.end()
             
             // Clean up page content

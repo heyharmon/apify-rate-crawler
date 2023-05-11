@@ -1,4 +1,4 @@
-# Crawlee + CheerioCrawler + TypeScript project
+# Cheerio Rate Crawler
 
 This template is a production ready boilerplate for developing with `CheerioCrawler`. Use this to bootstrap your projects using the most up-to-date code.
 
