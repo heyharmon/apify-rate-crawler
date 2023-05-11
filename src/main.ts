@@ -4,7 +4,7 @@ import * as htmlparser from 'htmlparser2'
 
 // import { router } from './routes.js'
 
-const startUrls = ['https://nwpreferredfcu.com/personal-banking/loans-3/vehicle/auto/']
+const startUrls = ['https://scraper-testing-site.netlify.app/rates/']
 
 const crawler = new CheerioCrawler({
     // requestHandler: router,
@@ -53,14 +53,14 @@ const crawler = new CheerioCrawler({
         })
 
         // Add other found links to queue
-        // await enqueueLinks({
-        //     strategy: 'same-domain',
-        //     transformRequestFunction(req) {
-        //         // ignore all links ending with `.pdf`
-        //         if (req.url.endsWith('.pdf')) return false
-        //         return req
-        //     },
-        // })
+        await enqueueLinks({
+            strategy: 'same-domain',
+            transformRequestFunction(req) {
+                // ignore all links ending with `.pdf`
+                if (req.url.endsWith('.pdf')) return false
+                return req
+            },
+        })
     }
 })
 
