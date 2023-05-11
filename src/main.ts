@@ -7,9 +7,8 @@ const startUrls = ['https://scraper-testing-site.netlify.app/rates/']
 await Actor.main(async () => {
     const crawler = new CheerioCrawler({
         async requestHandler({ $, request, enqueueLinks }) {
-            const { url } = request;
             const title = $('title').text()
-            console.log(`Crawling ${title} at "${url}".`)
+            console.log(`Crawling ${title} at "${request.url}".`)
 
             // Parse all parts of the DOM
             let parts = []
