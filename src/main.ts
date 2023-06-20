@@ -24,8 +24,7 @@ await Actor.main(async () => {
             let content = parts.join(' ').replace(/\ {2,}/g, ' ')
 
             // Setup a regex for finding rates
-            // Decimal and % required.
-            const regex = /\d+\.\d+%/g
+            const regex = /\d+\.\d+%/g // Decimal and % required.
 
             // Find rates in the content
             let rates = []
@@ -43,18 +42,17 @@ await Actor.main(async () => {
             await enqueueLinks({
                 strategy: 'same-domain',
                 transformRequestFunction(req) {
-                    // ignore all links ending with `.pdf`
-                    if (req.url.endsWith('.pdf')) return false
+                    if (req.url.endsWith('.pdf')) return false // ignore all links ending with `.pdf`
                     return req
                 },
             })
         }
     })
 
-    // Enqueue the initial request and run the crawler
-    // const input = await Actor.getInput();
-    // console.log(input.startUrl);
+    // Get actor inputs (from Apify console)
+    const input: any = await Actor.getInput()
+    const { startUrls } = input
 
-    const startUrls = ['https://nwpreferredfcu.com/sitemap/']
+    // Run crawler
     await crawler.run(startUrls)
 });
