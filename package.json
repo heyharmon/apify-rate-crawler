@@ -1,8 +1,8 @@
 {
-    "name": "cheerio-rate-crawler",
+    "name": "rate-crawler-cheerio",
     "version": "0.0.1",
     "type": "module",
-    "description": "This is an example of a Crawlee project.",
+    "description": "Find static financial rates (e.g., 4.99%) across a website",
     "dependencies": {
         "apify": "^3.1.4",
         "crawlee": "^3.0.0",
@@ -19,7 +19,8 @@
         "start:prod": "node dist/main.js",
         "start:dev": "ts-node-esm -T src/main.ts",
         "build": "tsc",
-        "test": "echo \"Error: oops, the actor has no tests yet, sad!\" && exit 1"
+        "test": "echo \"Error: oops, the actor has no tests yet, sad!\" && exit 1",
+        "nwp": "ts-node-esm -T src/nwp.ts"
     },
     "author": "It's not you it's me",
     "license": "ISC"

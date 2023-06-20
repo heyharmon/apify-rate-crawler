@@ -2,8 +2,6 @@ import { Actor } from 'apify';
 import { CheerioCrawler, Dataset } from 'crawlee'
 import * as htmlparser from 'htmlparser2'
 
-const startUrls = ['https://scraper-testing-site.netlify.app/rates/']
-
 await Actor.main(async () => {
     const crawler = new CheerioCrawler({
         async requestHandler({ $, request, enqueueLinks }) {
@@ -54,5 +52,9 @@ await Actor.main(async () => {
     })
 
     // Enqueue the initial request and run the crawler
+    // const input = await Actor.getInput();
+    // console.log(input.startUrl);
+
+    const startUrls = ['https://nwpreferredfcu.com/sitemap/']
     await crawler.run(startUrls)
 });
